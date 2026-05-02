@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"d:\\\\websites\\\\astro-site-v5\\\\astro-site\\\\src\\\\pages\" -Recurse -File | Select-Object FullName | ForEach-Object { $_.FullName })",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\websites\\\\astro-site-v5\\\\astro-site\" -File | Where-Object { $_.Name -match \"prettier|eslint|stylelint|editorconfig|tsconfig\" } | Select-Object -Property Name)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\websites\\\\astro-site-v5\\\\astro-site\\\\\" -Force | Select-Object Name, @{Name=\"Type\"; Expression={if\\($_.PSIsContainer\\){\"Folder\"}else{\"File\"}}} | Sort-Object Name)"
+    ]
+  }
+}

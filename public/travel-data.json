@@ -1,0 +1,176 @@
+{
+  "trips": [
+    {
+      "id": "japan",
+      "title": "The Mainline: Tokyo, Kyoto, & Osaka",
+      "volume": "Volume I",
+      "days": 10,
+      "excerpt": "A deep dive into Japan's hyper-efficient infrastructure, ancient continuity, and the aesthetics of controlled chaos.",
+      "image": "/images/Osaka-castle.jpg",
+      "imageFallback": "#c8b89a",
+      "file": "/trips/japan",
+      "cities": [
+        {
+          "name": "Tokyo, Japan",
+          "lon": 139.69,
+          "lat": 35.69
+        },
+        {
+          "name": "Osaka, Japan",
+          "lon": 135.5,
+          "lat": 34.69
+        },
+        {
+          "name": "Kyoto, Japan",
+          "lon": 135.77,
+          "lat": 35.01
+        }
+      ]
+    }
+  ],
+  "visited": [
+    {
+      "name": "New York, USA",
+      "lon": -74.01,
+      "lat": 40.71
+    },
+    {
+      "name": "San Francisco, USA",
+      "lon": -122.42,
+      "lat": 37.77
+    },
+    {
+      "name": "Blacksburg, USA",
+      "lon": -80.41,
+      "lat": 37.23
+    },
+    {
+      "name": "Hamburg, Germany",
+      "lon": 10.0,
+      "lat": 53.55
+    },
+    {
+      "name": "Sankt Peter-Ording, Germany",
+      "lon": 8.63,
+      "lat": 54.32
+    },
+    {
+      "name": "Dubai, UAE",
+      "lon": 55.3,
+      "lat": 25.2
+    },
+    {
+      "name": "Singapore",
+      "lon": 103.82,
+      "lat": 1.35
+    },
+    {
+      "name": "Jakarta, Indonesia",
+      "lon": 106.83,
+      "lat": -6.21
+    },
+    {
+      "name": "Kuala Lumpur, Malaysia",
+      "lon": 101.69,
+      "lat": 3.14
+    },
+    {
+      "name": "Pune, India",
+      "lon": 73.86,
+      "lat": 18.52
+    }
+  ],
+  "photos": [
+    {
+      "src": "/images/Osaka-castle.jpg",
+      "caption": "Osaka Castle",
+      "location": "Osaka, Japan"
+    },
+  {
+    "src": "/images/blacksburg.jpg",
+    "caption": "Double rainbow over an apartment complex",
+    "location": "Blacksburg, Virginia, USA"
+  },
+  {
+    "src": "/images/DC-pier.jpg",
+    "caption": "Boats docked at a marina during sunset",
+    "location": "Washington, D.C., USA"
+  },
+  {
+    "src": "/images/Deer-at-nara.jpg",
+    "caption": "Sika deer resting by tree roots",
+    "location": "Nara, Japan"
+  },
+  {
+    "src": "/images/fushimi-inari.jpg",
+    "caption": "Vermilion torii gates at Fushimi Inari Shrine",
+    "location": "Kyoto, Japan"
+  },
+  {
+    "src": "/images/golden-gate.jpg",
+    "caption": "Golden Gate Bridge covered in fog with love locks in the foreground",
+    "location": "San Francisco, California, USA"
+  },
+  {
+    "src": "/images/Hakone.jpg",
+    "caption": "Scenic lake surrounded by autumn foliage",
+    "location": "Hakone, Japan"
+  },
+  {
+    "src": "/images/hamburg.jpg",
+    "caption": "Hamburg City Hall (Rathaus)",
+    "location": "Hamburg, Germany"
+  },
+  {
+    "src": "/images/jd-distillery.jpg",
+    "caption": "Jack Daniel's Distillery tasting flight",
+    "location": "Lynchburg, Tennessee, USA"
+  },
+  {
+    "src": "/images/lincoln-memorial.jpg",
+    "caption": "Statue of Abraham Lincoln at the Lincoln Memorial",
+    "location": "Washington, D.C., USA"
+  },
+  {
+    "src": "/images/manhattan.jpg",
+    "caption": "Aerial view of the New York City skyline featuring the Empire State Building",
+    "location": "New York City, New York, USA"
+  }, 
+  {
+    "src": "/images/mosque.jpg",
+    "caption": "Sheikh Zayed Grand Mosque",
+    "location": "Abu Dhabi, United Arab Emirates"
+  },
+  {
+    "src": "/images/niagara.jpg",
+    "caption": "Niagara Falls illuminated in blue at night",
+    "location": "Niagara Falls, New York, USA / Ontario, Canada"
+  },
+  {
+    "src": "/images/seagulls-northsee.jpg",
+    "caption": "Tern flying over a coastal body of water",
+    "location": "Sankt Peter Ording, Germany"
+  },
+  {
+    "src": "/images/SOL.jpg",
+    "caption": "Statue of Liberty and the Lower Manhattan skyline from the water",
+    "location": "New York City, New York, USA"
+  },
+  {
+    "src": "/images/stanford.jpg",
+    "caption": "Main Quad at Stanford University",
+    "location": "Stanford, California, USA"
+  },
+  {
+    "src": "/images/VT-football.jpg",
+    "caption": "Night game at Lane Stadium (Virginia Tech)",
+    "location": "Blacksburg, Virginia, USA"
+  },
+  {
+    "src": "/images/wall-street.jpg",
+    "caption": "Intersection at South William Street during dusk",
+    "location": "New York City, New York, USA"
+  }
+
+  ]
+}

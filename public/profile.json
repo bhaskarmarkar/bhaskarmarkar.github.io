@@ -1,0 +1,213 @@
+{
+  "name": "Bhas Karmarkar",
+  "role": "Applied robotics and automation systems",
+  "currently": "Bajaj Auto Ltd. · Pune, India",
+  "bio": "Building on a strong foundation in high-precision machine automation, my ambition is to rethink what intelligent medical devices can achieve. I am driven to work where machines meet the human body—exploring mechanobiology, microrobotics, and haptics. My ultimate goal is to engineer human-machine interfaces that make life-saving technology simpler, more effective, and universally accessible.",
+  "email": "bhasnk@vt.edu",
+  "linkedin": "linkedin.com/in/bhaskarmarkar",
+  "linkedinUrl": "https://linkedin.com/in/bhaskarmarkar",
+  "scholar": "Bhas Karmarkar",
+  "scholarUrl": "https://scholar.google.com/citations?user=R7_0lTAAAAAJ&hl=en&oi=ao",
+  "stats": [
+    {
+      "value": "~2",
+      "label": "Years Experience in Industry"
+    },
+    {
+      "value": "2+",
+      "label": "Years Experience in Research"
+    },
+    {
+      "value": "2",
+      "label": "Publications"
+    }
+  ],
+  "education": [
+    {
+      "degree": "MS · Mechanical Engineering",
+      "school": "Virginia Tech",
+      "detail": "Dec 2023 · GPA 3.91"
+    },
+    {
+      "degree": "BE · Mechanical Engineering",
+      "school": "Savitribai Phule Pune University · Pune",
+      "detail": "May 2021 · GPA 9.12"
+    }
+  ],
+  "experience": [
+    {
+      "period": "Nov 2024 – Present",
+      "org": "Bajaj Auto Ltd.",
+      "orgSub": "PGTE Programme",
+      "location": "Pune, India",
+      "role": "Assistant Manager — MAT Robotics",
+      "description": "Leading advanced R&D in high-precision automation, with a core focus on dexterous robotics, laser processing, and Physical AI integration."
+    },
+    {
+      "period": "Apr 2022 – Oct 2024",
+      "org": "MicroN Base Lab · Virginia Tech",
+      "orgSub": "Research Assistant",
+      "location": "Blacksburg, USA",
+      "role": "Research Assistant",
+      "bullets": [
+        "Advanced <strong>microrobotics</strong> research by improving ML-driven tracking by 10% — published in <em>Advanced Intelligent Systems</em>.",
+        "Designed mechanical models for acoustic polymer characterisation — published at <em>MARSS 2024, Delft</em>.",
+        "Conducted rheological V&V studies on viscoelastic polymers across dynamic frequency and temperature ranges.",
+        "Mentored a 6-member senior design engineering team on magneto-acoustic actuation projects."
+      ]
+    },
+    {
+      "period": "Jul 2020 – Jun 2021",
+      "org": "Mattechs Solutions",
+      "orgSub": "",
+      "location": "Pune, India",
+      "role": "Mechanical Project Intern",
+      "bullets": [
+        "Led end-to-end product development for a pilot-scale <strong>medical disinfection AGV</strong> from initial concept to production.",
+        "Engineered the chassis and app-integrated control system, redesigning core components to achieve a <strong>15% cost reduction</strong>."
+      ]
+    },
+    {
+      "period": "Dec 2019 – Jan 2020",
+      "org": "Pari Robotics",
+      "orgSub": "",
+      "location": "Pune, India",
+      "role": "Build Engineer Intern",
+      "bullets": [
+        "Integrated <strong>pneumatic controls with PLC systems</strong> across 3 automated subsystems for gantry and conveyor builds.",
+        "Redesigned critical mechanical components to streamline assembly, reducing the project timeline by <strong>10 days</strong>."
+      ]
+    },
+    {
+      "period": "Feb 2019 – Mar 2019",
+      "org": "Alfa Enterprises",
+      "orgSub": "",
+      "location": "Pune, India",
+      "role": "Manufacturing Intern",
+      "bullets": [
+        "Formulated a new resin mixture that achieved a <strong>40% weight reduction</strong> in composite manufacturing parts.",
+        "Implemented a 3-step efficiency strategy resulting in <strong>20% less downtime and 30% higher output</strong>."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "group": "Software",
+      "items": [
+        "MATLAB",
+        "Python",
+        "SolidWorks",
+        "AutoCAD",
+        "NX",
+        "Creo",
+        "SolidEdge",
+        "Visual Components",
+        "Teamcenter",
+        "SAP"
+      ]
+    },
+    {
+      "group": "Hardware & Embedded",
+      "items": [
+        "FANUC Robots",
+        "AMR / AGV",
+        "Arduino",
+        "Raspberry Pi",
+        "ESP32",
+        "MSP432",
+        "HM-10",
+        "PLC"
+      ]
+    },
+    {
+      "group": "Engineering",
+      "items": [
+        "GD&T",
+        "DFMEA",
+        "DFA",
+        "DOE",
+        "3D Printing",
+        "Pneumatics",
+        "Laser Processes",
+        "Machine Tools"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Water Strider pH Maintenance Robot",
+      "tech": [
+        "SolidWorks",
+        "DFRobot Beetle",
+        "SMA Actuator",
+        "3D Printing"
+      ],
+      "description": "Scaled water strider leveraging surface tension. Thermal analysis for Shape Memory Alloy actuator; warping assessment of 3D-printed prototypes.",
+      "period": "Jan – May 2022"
+    },
+    {
+      "name": "Bell Crank Gradient-Based Optimisation",
+      "tech": [
+        "Creo",
+        "MATLAB",
+        "Gradient Optimisation"
+      ],
+      "description": "20% weight reduction while maintaining 100% safety compliance through gradient-based shape optimisation.",
+      "period": "Jan – May 2022"
+    },
+    {
+      "name": "Automated Lighting Control + Cloud Logging",
+      "tech": [
+        "AWS",
+        "Raspberry Pi",
+        "Python",
+        "Telegram API"
+      ],
+      "description": "Movement-detection system on AWS Cloud with automated lighting and real-time Telegram notifications.",
+      "period": "Aug – Dec 2021"
+    },
+    {
+      "name": "Formula Student (FSAE) Race Car",
+      "tech": [
+        "SolidWorks",
+        "ANSYS",
+        "FRP Manufacturing",
+        "Arduino"
+      ],
+      "description": "35-member team · Formula 1-style race car · <strong>National rank 15th</strong>. Led aerodynamics and managed business & sponsorship.",
+      "period": "Jul 2018 – Aug 2019"
+    }
+  ],
+  "publications": [
+    {
+      "number": "01",
+      "title": "Motion Enhanced Multi-Level Tracker (MEMTrack): A Deep Learning-Based Approach to Microrobot Tracking in Dense and Low-Contrast Environments",
+      "url": "https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/aisy.202300590",
+      "venue": "Advanced Intelligent Systems · Feb 2024"
+    },
+    {
+      "number": "02",
+      "title": "Viscoelastic Characterization of an Agar Tissue Phantom Using Acoustic Microelastography",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10612723",
+      "venue": "MARSS Conference 2024 · Delft, Netherlands · July 2024"
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "level": "Fluent"
+    },
+    {
+      "name": "Deutsch",
+      "level": "B2 · Professional"
+    },
+    {
+      "name": "हिंदी",
+      "level": "Native"
+    },
+    {
+      "name": "मराठी",
+      "level": "Native"
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style is:global>
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:        #faf8f5;
+      --bg2:       #f0ebe3;
+      --ink:       #1a1614;
+      --ink2:      #4a4541;
+      --muted:     #8a8480;
+      --red:       #c44536;
+      --gold:      #c8973a;
+      --line:      #e0d5c7;
+      --mono:      'DM Mono', monospace;
+      --serif:     'Cormorant Garamond', serif;
+      --serif-hd:  'Libre Baskerville', serif;
+      --pad:       clamp(1.2rem,5vw,3rem);
+      --max:       1100px;
+      --nav-bg:    rgba(250,248,245,0.92);
+    }
+
+    body { background: var(--bg); color: var(--ink); font-family: var(--serif); line-height: 1.75; -webkit-font-smoothing: antialiased; font-size: 18px; }
+    ::selection { background: var(--gold); color: #fff; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 var(--pad); background: var(--nav-bg); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+    .brand { font-family: var(--mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--ink); white-space: nowrap; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.on { color: var(--ink); }
+    .nav-cta { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.45rem 1rem; border: 1px solid var(--ink); color: var(--ink); text-decoration: none; transition: all 0.2s; }
+    .nav-cta:hover { background: var(--ink); color: var(--bg); }
+
+    main { padding-top: 56px; }
+    .wrap { max-width: var(--max); margin: 0 auto; }
+
+    /* ── HERO HEADER ── */
+    .page-hero {
+      padding: 5rem var(--pad) 4rem;
+      border-bottom: 3px solid var(--red);
+      background: linear-gradient(160deg, #ede4d6 0%, #d8cbb8 100%);
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c89540' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .page-hero-inner { max-width: var(--max); margin: 0 auto; position: relative; }
+    .hero-kicker { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; }
+    .hero-kicker::before { content: ''; width: 32px; height: 1px; background: var(--red); }
+    .page-hero h1 { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(2.4rem, 5vw, 4.2rem); letter-spacing: -0.01em; line-height: 1.1; color: var(--ink); margin-bottom: 0.8rem; }
+    .page-hero p { font-family: var(--serif); font-style: italic; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--ink2); font-weight: 300; max-width: 560px; }
+
+    /* ── TOPIC HUB ── */
+    .topic-hub { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border-bottom: 1px solid var(--line); }
+    .topic-box { background: var(--bg2); padding: 2.5rem 1.5rem; text-align: center; cursor: pointer; transition: background 0.25s, opacity 0.25s; }
+    .topic-box:hover { background: var(--bg2); }
+    .topic-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; display: block; }
+    .topic-name { font-family: var(--serif-hd); font-size: 1.5rem; font-weight: 700; color: var(--ink); }
+    .topic-box.active { background: var(--ink); }
+    .topic-box.active .topic-label { color: var(--gold); }
+    .topic-box.active .topic-name { color: var(--bg); }
+
+    /* ── FEATURED ── */
+    .featured-section { padding: 5rem var(--pad); border-bottom: 1px solid var(--line); }
+    .art-meta { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.5rem; font-family: var(--mono); font-size: 0.62rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; flex-wrap: wrap; }
+    .ctag { padding: 0.2rem 0.65rem; border: 1px solid var(--line); font-size: 0.58rem; color: var(--ink2); background: var(--bg2); }
+    .art-title { font-family: var(--serif-hd); font-size: clamp(1.8rem, 5vw, 3.6rem); line-height: 1.1; margin-bottom: 1.2rem; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+    .art-deck { font-family: var(--serif); font-style: italic; font-size: clamp(1rem, 2vw, 1.25rem); color: var(--ink2); max-width: 680px; margin-bottom: 2.5rem; line-height: 1.65; font-weight: 300; }
+    .read-btn { background: var(--ink); color: var(--bg); border: none; padding: 0.85rem 2rem; font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.14em; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
+    .read-btn:hover { background: var(--red); }
+
+    /* ── ARTICLE GRID ── */
+    .grid-section { padding: 4rem var(--pad); }
+    .grid-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2.5rem; }
+    .grid-label::after { content: ''; flex: 1; height: 1px; background: var(--line); max-width: 60px; }
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px,100%), 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .mini-card { background: var(--bg); padding: 2rem; transition: background 0.2s; text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; min-height: 240px; }
+    .mini-card:hover { background: var(--bg2); filter: brightness(1.06); }
+    .card-topic { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 0.7rem; display: block; }
+    .mini-card h3 { font-family: var(--serif-hd); font-size: 1.1rem; font-weight: 700; line-height: 1.3; color: var(--ink); margin-bottom: 0.8rem; }
+    .mini-card p { font-size: 0.88rem; color: var(--ink2); line-height: 1.65; font-weight: 300; flex-grow: 1; }
+    .card-arrow { font-family: var(--mono); font-size: 0.6rem; color: var(--gold); margin-top: 1.2rem; letter-spacing: 0.1em; }
+
+    /* ── EMPTY STATE ── */
+    .empty-state { padding: 4rem; text-align: center; background: var(--bg2); border: 1px solid var(--line); }
+    .empty-state p { font-family: var(--serif); font-style: italic; color: var(--muted); font-size: 1.1rem; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); color: var(--bg); padding: 2rem var(--pad); text-align: center; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── MOBILE ── */
+    @media(max-width: 768px) {
+      .topic-hub { grid-template-columns: 1fr; }
+      .topic-box { padding: 1.8rem 1.5rem; }
+      .article-grid { grid-template-columns: 1fr; }
+      .featured-section { padding: 3rem var(--pad); }
+      .art-title { font-size: clamp(1.6rem, 6vw, 2.6rem); }
+      .art-deck { font-size: clamp(0.95rem, 2.5vw, 1.1rem); margin-bottom: 1.8rem; }
+    }
+    @media(max-width: 600px) {
+      nav { height: 52px; padding: 0 1.2rem; }
+      .brand { font-size: 0; letter-spacing: 0; }
+      .brand::after { content: 'BK'; font-size: 0.78rem; letter-spacing: 0.14em; font-family: var(--mono); }
+      .nav-links { gap: 1.4rem; }
+      .nav-links a { font-size: 0.62rem; letter-spacing: 0.08em; }
+      .nav-cta { display: none; }
+      .page-hero { padding: 3.5rem var(--pad) 3rem; }
+      .art-title { font-size: clamp(1.5rem, 8vw, 2rem); }
+      .art-meta { gap: 0.5rem; }
+      .read-btn { width: 100%; text-align: center; padding: 0.85rem 1rem; }
+      .mini-card { min-height: 200px; padding: 1.5rem; }
+    }
+
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="brand">Bhas Karmarkar</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">Work</a></li>
+    <li><a href="/travel">Travelogue</a></li>
+    <li><a href="/research" class="on">Research</a></li>
+  </ul>
+  <a href="mailto:bhasnk@vt.edu" class="nav-cta">Get in Touch</a>
+</nav>
+
+<main>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="hero-kicker">Research & Analysis</div>
+      <h1>Essays</h1>
+      <p>Economics, policy, and technology — things I find interesting to explore.</p>
+    </div>
+  </div>
+
+  <div class="topic-hub wrap" id="topic-hub">
+    <div id="box-economics" class="topic-box" data-topic="economics">
+      <span class="topic-label">Volume I</span>
+      <span class="topic-name">Economics</span>
+    </div>
+    <div id="box-policy" class="topic-box" data-topic="policy">
+      <span class="topic-label">Volume II</span>
+      <span class="topic-name">Policy</span>
+    </div>
+    <div id="box-tech" class="topic-box" data-topic="tech">
+      <span class="topic-label">Volume III</span>
+      <span class="topic-name">Technology</span>
+    </div>
+  </div>
+
+  <div id="featured-section" class="featured-section wrap"></div>
+
+  <div class="grid-section wrap">
+    <div class="grid-label">All Articles</div>
+    <div class="article-grid" id="article-grid"></div>
+  </div>
+
+</main>
+
+<footer>
+  Bhas Karmarkar · 2026 · Research &amp; Analysis ·
+  <a href="/">Home</a> · <a href="/about">Work</a> · <a href="/travel">Travelogue</a>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  let blogData = null;
+  let activeFilter = null;
+
+  fetch('blog-data.json')
+    .then(r => r.json())
+    .then(data => {
+      // Compute readTime from actual wordCount stored in blog-data.json
+      data.articles.forEach(a => {
+        if (a.wordCount) {
+          a.readTime = Math.max(1, Math.round(a.wordCount / 120)) + ' Min Read';
+        } else {
+          a.readTime = '—';
+        }
+      });
+
+      // Auto-set featured = most recent article (first in array = most recent)
+      // Sort by date descending — assumes format "Month YYYY"
+      const monthOrder = { January:1,February:2,March:3,April:4,May:5,June:6,
+                           July:7,August:8,September:9,October:10,November:11,December:12 };
+      data.articles.sort((a, b) => {
+        const [aM, aY] = a.date.split(' ');
+        const [bM, bY] = b.date.split(' ');
+        if (bY !== aY) return parseInt(bY) - parseInt(aY);
+        return (monthOrder[bM]||0) - (monthOrder[aM]||0);
+      });
+      // First article after sort is the most recent = featured
+      data.articles.forEach((a, i) => { a.featured = (i === 0); });
+
+      blogData = data;
+      renderFeatured();
+      renderCards();
+    })
+    .catch(err => console.error('Could not load blog-data.json:', err));
+
+  function renderFeatured() {
+    const section = document.getElementById('featured-section');
+    const featured = blogData.articles.find(a => {
+      if (!a.featured) return false;
+      if (activeFilter && !a.topics.includes(activeFilter)) return false;
+      return true;
+    }) || blogData.articles.find(a => !activeFilter || a.topics.includes(activeFilter));
+
+    if (!featured) { section.innerHTML = ''; section.style.display = 'none'; return; }
+    section.style.display = 'block';
+    const tags = featured.topics.map(t => `<span class="ctag">${t.charAt(0).toUpperCase()+t.slice(1)}</span>`).join('');
+    section.innerHTML = `
+      <div class="art-meta">${tags}<span>${featured.date}</span><span>·</span><span>${featured.readTime}</span></div>
+      <h1 class="art-title">${featured.title}</h1>
+      <p class="art-deck">${featured.deck}</p>
+      <a href="${featured.file}" class="read-btn">Read Full Analysis →</a>
+    `;
+  }
+
+  function renderCards() {
+    const grid = document.getElementById('article-grid');
+    const articles = blogData.articles.filter(a => !activeFilter || a.topics.includes(activeFilter));
+    if (articles.length === 0) {
+      grid.innerHTML = '<div class="empty-state"><p>No articles in this volume yet — coming soon.</p></div>';
+      return;
+    }
+    grid.innerHTML = articles.map(a => {
+      const topicsLabel = a.topics.map(t => t.charAt(0).toUpperCase()+t.slice(1)).join(' / ');
+      return `<a href="${a.file}" class="mini-card">
+        <div>
+          <span class="card-topic">${topicsLabel}</span>
+          <h3>${a.title.replace(/<em>|<\/em>/g,'')}</h3>
+          <p>${a.excerpt}</p>
+        </div>
+        <span class="card-arrow">Read →</span>
+      </a>`;
+    }).join('');
+  }
+
+  document.querySelectorAll('.topic-box').forEach(box => {
+    box.addEventListener('click', () => {
+      const topic = box.dataset.topic;
+      if (activeFilter === topic) {
+        activeFilter = null;
+        document.querySelectorAll('.topic-box').forEach(b => b.classList.remove('active'));
+      } else {
+        activeFilter = topic;
+        document.querySelectorAll('.topic-box').forEach(b => b.classList.remove('active'));
+        box.classList.add('active');
+      }
+      renderFeatured();
+      renderCards();
+    });
+  });
+
+}); // DOMContentLoaded
+</script>
+</body>
+</html>

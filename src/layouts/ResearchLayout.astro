@@ -1,0 +1,179 @@
+---
+export interface Props {
+  title: string;
+  deck: string;
+  topics: string[];
+  date: string;
+  readTime: string;
+  stats?: { label: string; value: string }[];
+}
+const { title, deck, topics, date, readTime, stats = [] } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} — Bhas Karmarkar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style is:global>
+
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    :root{
+      --bg:       #faf8f5;
+      --bg2:      #f0ebe3;
+      --ink:      #1a1614;
+      --ink2:     #4a4541;
+      --muted:    #8a8480;
+      --red:      #c44536;
+      --gold:     #c8973a;
+      --line:     #e0d5c7;
+      --mono:     'DM Mono', monospace;
+      --serif:    'Cormorant Garamond', serif;
+      --serif-hd: 'Libre Baskerville', serif;
+      --pad:      clamp(1.2rem,5vw,3rem);
+      --max:      1100px;
+      --nav-bg:   rgba(250,248,245,0.92);
+    }
+    body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-weight:300;line-height:1.85;-webkit-font-smoothing:antialiased;font-size:clamp(17px,2vw,19px);}
+    ::selection{background:var(--gold);color:#fff;}
+
+    /* ── NAV ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+    .brand{font-family:var(--mono);font-size:0.75rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;color:var(--ink);white-space:nowrap;}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;color:var(--muted);transition:color 0.2s;}
+    .nav-links a:hover,.nav-links a.on{color:var(--ink);}
+    .nav-cta{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.45rem 1rem;border:1px solid var(--ink);color:var(--ink);text-decoration:none;transition:all 0.2s;}
+    .nav-cta:hover{background:var(--ink);color:var(--bg);}
+
+    main{padding-top:56px;}
+    .wrap{max-width:var(--max);margin:0 auto;}
+
+    /* ── BACK ── */
+    .back-nav{display:inline-flex;align-items:center;gap:0.5rem;margin:3rem var(--pad) 2rem;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+    .back-nav:hover{color:var(--gold);}
+
+    /* ── ARTICLE LAYOUT ── */
+    .article-layout{display:grid;grid-template-columns:1fr 260px;gap:5rem;padding:0 var(--pad) 6rem;}
+    .article-content{max-width:680px;}
+
+    /* ── META ── */
+    .art-meta{display:flex;align-items:center;gap:0.8rem;margin-bottom:1.8rem;font-family:var(--mono);font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;flex-wrap:wrap;}
+    .ctag{padding:0.2rem 0.65rem;border:1px solid var(--line);font-size:0.58rem;color:var(--ink2);background:var(--bg2);}
+
+    /* ── TITLE ── */
+    .art-title{font-family:var(--serif-hd);font-size:clamp(1.8rem,5vw,3.6rem);line-height:1.1;margin-bottom:1.5rem;font-weight:700;letter-spacing:-0.02em;color:var(--ink);}
+
+    /* ── BODY ── */
+    .article-content h2{font-family:var(--serif-hd);font-size:clamp(1.2rem,3vw,1.7rem);margin:3.5rem 0 1.2rem;color:var(--ink);font-weight:700;line-height:1.2;letter-spacing:-0.01em;}
+    .article-content p{font-size:1.05rem;line-height:1.9;color:var(--ink2);margin-bottom:1.5rem;}
+    .article-content strong{color:var(--ink);font-weight:600;}
+
+    .pullquote{border-left:2px solid var(--red);padding:0.8rem 2rem;margin:3rem 0;font-family:var(--serif);font-size:clamp(1.15rem,2.5vw,1.4rem);font-style:italic;color:var(--ink);line-height:1.55;}
+    .data-note{background:var(--bg2);border:1px solid var(--line);border-left:2px solid var(--gold);padding:1.4rem 1.6rem;margin:2rem 0;font-family:var(--mono);font-size:0.78rem;color:var(--ink2);line-height:1.75;}
+    .data-note strong{color:var(--gold);}
+    .conclusion-box{background:var(--bg2);border-left:3px solid var(--red);padding:2rem;margin:3.5rem 0;}
+    .conclusion-box p{font-family:var(--serif);font-size:1.2rem;font-style:italic;color:var(--ink);margin-bottom:0;line-height:1.6;}
+
+    /* ── SIDEBAR ── */
+    .sidebar{position:sticky;top:90px;}
+    .sb-block{margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--line);}
+    .sb-block:last-child{border-bottom:none;}
+    .sb-lbl{font-family:var(--mono);font-size:0.58rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.18em;margin-bottom:1rem;display:block;}
+    .sb-stat{margin-bottom:1.2rem;}
+    .sb-val{font-family:var(--serif-hd);font-size:1.6rem;display:block;color:var(--ink);line-height:1;font-weight:700;}
+    .sb-desc{font-family:var(--mono);font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.3rem;display:block;}
+
+    /* ── FOOTER ── */
+    footer{background:var(--ink);color:var(--bg);padding:2rem var(--pad);text-align:center;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;}
+    footer a{color:var(--gold);text-decoration:none;}
+
+    /* ── TABLET ── */
+    @media(max-width:900px){
+      .article-layout{grid-template-columns:1fr;gap:0;}
+      .sidebar{display:none;}
+      .article-content{max-width:100%;}
+      .back-nav{margin:2rem var(--pad) 1.5rem;}
+    }
+    @media(max-width:768px){
+      .art-title{font-size:clamp(1.6rem,6vw,2.6rem);}
+      .article-layout{padding:0 var(--pad) 4rem;}
+      .pullquote{padding:0.6rem 1.2rem;margin:2rem 0;}
+      .conclusion-box{padding:1.4rem;}
+    }
+    /* ── MOBILE ── */
+    @media(max-width:600px){
+      nav{height:52px;padding:0 1.2rem;}
+      .brand{font-size:0;letter-spacing:0;}
+      .brand::after{content:'BK';font-size:0.78rem;letter-spacing:0.14em;font-family:var(--mono);color:var(--ink);}
+      .nav-links{gap:1.4rem;}
+      .nav-links a{font-size:0.62rem;letter-spacing:0.08em;}
+      .nav-cta{display:none;}
+      .art-title{font-size:clamp(1.5rem,8vw,2.2rem);}
+      .art-meta{gap:0.5rem;}
+      .back-nav{margin:1.5rem var(--pad) 1rem;}
+      .article-layout{padding:0 var(--pad) 3rem;}
+      .data-note{padding:1rem 1.2rem;font-size:0.74rem;}
+    }
+  
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="brand">Bhas Karmarkar</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">Work</a></li>
+    <li><a href="/travel">Travelogue</a></li>
+    <li><a href="/research" class="on">Research</a></li>
+  </ul>
+  <a href="mailto:bhasnk@vt.edu" class="nav-cta">Get in Touch</a>
+</nav>
+
+<main>
+  <a href="/research" class="back-nav">← Back to Research</a>
+
+  <div class="article-layout wrap">
+    <article class="article-content">
+      <div class="art-meta">
+        {topics.map(t => <span class="ctag">{t.charAt(0).toUpperCase() + t.slice(1)}</span>)}
+        <span>{date}</span><span>·</span><span>{readTime}</span>
+      </div>
+      <h1 class="art-title" set:html={title} />
+      <slot />
+    </article>
+
+    <aside class="sidebar">
+      {stats.length > 0 && (
+        <div class="sb-block">
+          <span class="sb-lbl">Key Metrics</span>
+          {stats.map(s => (
+            <div class="sb-stat">
+              <span class="sb-val">{s.value}</span>
+              <span class="sb-desc">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      )}
+      <div class="sb-block">
+        <span class="sb-lbl">Author</span>
+        <p style="font-size:0.9rem; margin-top:0.8rem;">
+          <a href="/" style="color:var(--ink2); text-decoration:none;">Bhas Karmarkar</a><br>
+          <span style="color:var(--muted); font-family:var(--mono); font-size:0.62rem;">Robotics Engineer · Pune</span>
+        </p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <a href="/research">← Back to Research</a> &nbsp;·&nbsp; Bhas Karmarkar · 2026
+</footer>
+
+</body>
+</html>

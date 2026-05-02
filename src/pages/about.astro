@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bhas Karmarkar — Profile</title>
+  <meta name="description" content="Bhas Karmarkar — Robotics & Automation Engineer. Experience, skills, projects, publications." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style is:global>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:       #faf8f5;
+      --bg2:      #f0ebe3;
+      --ink:      #1a1614;
+      --ink2:     #4a4541;
+      --muted:    #8a8480;
+      --red:      #c44536;
+      --gold:     #c8973a;
+      --line:     #e0d5c7;
+      --mono:     'DM Mono', monospace;
+      --serif:    'Cormorant Garamond', serif;
+      --serif-hd: 'Libre Baskerville', serif;
+      --pad:      clamp(1.2rem, 5vw, 3rem);
+      --max:      1100px;
+    }
+
+    body { background: var(--bg); color: var(--ink); font-family: var(--serif); line-height: 1.7; -webkit-font-smoothing: antialiased; font-size: 18px; overflow-x: hidden; }
+    ::selection { background: var(--gold); color: #fff; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 var(--pad); background: rgba(250,248,245,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .brand { font-family: var(--mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--ink); white-space: nowrap; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.on { color: var(--ink); }
+    .nav-cta { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.45rem 1rem; border: 1px solid var(--ink); color: var(--ink); text-decoration: none; transition: all 0.2s; }
+    .nav-cta:hover { background: var(--ink); color: var(--bg); }
+
+    main { padding-top: 56px; }
+    .wrap { max-width: var(--max); margin: 0 auto; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 5rem var(--pad) 0;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 4rem;
+      align-items: start;
+      border-bottom: 1px solid var(--line);
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    /* sidebar */
+    .hero-sidebar { padding-bottom: 4rem; border-right: 1px solid var(--line); padding-right: 3rem; }
+    .profile-img {
+      width: 100%; max-width: 240px; aspect-ratio: 4/5; object-fit: cover; object-position: top;
+      border: 1px solid var(--line); display: block;
+      margin-bottom: 2rem; filter: grayscale(8%);
+      background: var(--bg2);
+    }
+    .edu-block { margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--line); }
+    .edu-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .edu-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+    .edu-school { font-family: var(--serif-hd); font-size: 0.95rem; color: var(--ink); line-height: 1.3; }
+    .edu-sub { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* main */
+    .hero-main { padding-bottom: 4rem; }
+    .eyebrow { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 1.4rem; display: flex; align-items: center; gap: 0.7rem; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 6px #22c55e; animation: blink 2.4s ease-in-out infinite; flex-shrink: 0; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+    h1 { font-family: var(--serif-hd); font-size: clamp(2.6rem,5vw,4.2rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.4rem; }
+    .role { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; }
+    .bio { font-size: 1.05rem; line-height: 1.85; color: var(--ink2); max-width: 520px; margin-bottom: 2rem; font-weight: 300; }
+
+    .contacts { margin-bottom: 2rem; }
+    .crow { display: flex; gap: 1rem; font-family: var(--mono); font-size: 0.68rem; color: var(--muted); margin-bottom: 0.5rem; align-items: baseline; }
+    .clbl { color: var(--muted); width: 80px; flex-shrink: 0; }
+    .crow a { color: var(--ink); text-decoration: none; transition: color 0.2s; }
+    .crow a:hover { color: var(--red); }
+
+    .cta { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.65rem 1.4rem; text-decoration: none; border: 1px solid var(--line); transition: all 0.2s; background: transparent; color: var(--ink); cursor: pointer; }
+    .btn:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .btn-dark { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .btn-dark:hover { background: var(--red); border-color: var(--red); }
+
+    /* ── STATS ── */
+    .stats-outer { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .stats { display: grid; grid-template-columns: repeat(3,1fr); }
+    .stat { padding: 2rem var(--pad); border-right: 1px solid var(--line); text-align: center; }
+    .stat:last-child { border-right: none; }
+    .snum { font-family: var(--serif-hd); font-size: 2.2rem; font-weight: 700; color: var(--ink); display: block; line-height: 1; }
+    .sdesc { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; }
+
+    /* ── SECTION NAV ── */
+    .section-nav-outer { background: var(--bg2); border-bottom: 1px solid var(--line); position: sticky; top: 56px; z-index: 100; }
+    .section-nav { display: flex; flex-wrap: wrap; gap: 0; padding: 0 var(--pad); max-width: var(--max); margin: 0 auto; }
+    .sec-btn { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 1rem 1.2rem; border: none; background: transparent; color: var(--muted); cursor: pointer; transition: color 0.2s; position: relative; border-bottom: 2px solid transparent; -webkit-tap-highlight-color: transparent; }
+    .sec-btn:hover { color: var(--ink); }
+    .sec-btn.active { color: var(--ink); border-bottom-color: var(--red); }
+
+    /* ── COLLAPSIBLE ── */
+    .section.collapsible { overflow: hidden; }
+    .section.collapsible .section-inner { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .section.collapsible.open .section-inner { max-height: 6000px; }
+    .section.collapsible.open { border-top: 1px solid var(--line); }
+    .section-inner-pad { padding: 4rem var(--pad); }
+
+    /* ── SECTION LABEL ── */
+    .lbl { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.8rem; }
+    .lbl::after { content: ''; flex: 1; height: 1px; background: var(--line); max-width: 80px; }
+
+    /* ── EXPERIENCE ── */
+    .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 2.5rem; padding: 2.5rem 0; border-bottom: 1px solid var(--line); }
+    .exp-item:last-child { border-bottom: none; }
+    .eperiod { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); display: block; margin-bottom: 0.5rem; }
+    .eorg { font-family: var(--mono); font-size: 0.72rem; color: var(--ink); font-weight: 500; }
+    .eorgsub, .eloc { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); margin-top: 0.15rem; }
+    .erole { font-family: var(--serif-hd); font-size: 1.1rem; font-weight: 400; font-style: italic; color: var(--ink); margin-bottom: 1rem; }
+    .ebullets { list-style: none; }
+    .ebullets li { font-size: 0.95rem; color: var(--ink2); line-height: 1.8; padding-left: 1.2rem; position: relative; font-weight: 300; }
+    .ebullets li + li { margin-top: 0.4rem; }
+    .ebullets li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+    .ebullets strong { color: var(--ink); font-weight: 600; }
+
+    /* ── SKILLS ── */
+    .skill-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2.5rem; }
+    .sglbl { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .chip { display: inline-block; font-family: var(--mono); font-size: 0.6rem; padding: 0.25rem 0.65rem; border: 1px solid var(--line); color: var(--ink2); background: var(--bg2); letter-spacing: 0.05em; transition: border-color 0.2s, color 0.2s; }
+    .chip:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* ── PROJECTS ── */
+    .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .proj-card { padding: 2rem; background: var(--bg); transition: background 0.2s; }
+    .proj-card:hover { background: var(--bg2); }
+    .pname { font-family: var(--serif-hd); font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.6rem; line-height: 1.3; }
+    .ptech { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.8rem; }
+    .pdesc { font-size: 0.9rem; color: var(--ink2); line-height: 1.75; font-weight: 300; }
+    .pyear { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); margin-top: 0.8rem; }
+
+    /* ── PUBLICATIONS ── */
+    .pub-item { display: grid; grid-template-columns: 2rem 1fr; gap: 1.2rem; padding: 1.6rem 0; border-bottom: 1px solid var(--line); align-items: start; }
+    .pub-item:first-child { border-top: 1px solid var(--line); }
+    .pnum { font-family: var(--mono); font-size: 0.62rem; color: var(--gold); padding-top: 3px; }
+    .ptitle { font-family: var(--serif-hd); font-size: 0.95rem; font-weight: 400; color: var(--ink); margin-bottom: 0.4rem; line-height: 1.5; }
+    .ptitle a { text-decoration: none; color: inherit; transition: color 0.2s; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+    .ptitle a:hover { color: var(--red); border-bottom-color: var(--red); }
+    .pvenue { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); }
+
+    /* ── LANGUAGES ── */
+    .lang-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .lang-item { padding: 2rem; background: var(--bg); text-align: center; transition: background 0.2s; }
+    .lang-item:hover { background: var(--bg2); }
+    .lname { font-family: var(--serif-hd); font-size: 1.1rem; color: var(--ink); }
+    .llevel { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); margin-top: 0.4rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); color: var(--bg); padding: 2rem var(--pad); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { color: var(--bg); }
+
+    /* ── MOBILE ── */
+    @media(max-width: 860px) {
+      .hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 3rem; }
+      .hero-sidebar { border-right: none; padding-right: 0; border-bottom: 1px solid var(--line); padding-bottom: 2.5rem; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2rem; }
+      .profile-img { width: 140px; max-width: 140px; aspect-ratio: 1; border-radius: 50%; margin-bottom: 0; flex-shrink: 0; }
+      .edu-blocks { flex: 1; min-width: 200px; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.6rem; }
+      .skill-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      .proj-grid { grid-template-columns: 1fr; }
+      .lang-row { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid var(--line); }
+      .stat:last-child { border-bottom: none; }
+      .section-inner-pad { padding: 2.5rem var(--pad); }
+    }
+    @media(max-width: 600px) {
+      nav { height: 52px; padding: 0 1.2rem; }
+      .brand { font-size: 0; letter-spacing: 0; }
+      .brand::after { content: 'BK'; font-size: 0.78rem; letter-spacing: 0.14em; font-family: var(--mono); }
+      .nav-links { gap: 1.4rem; }
+      .nav-links a { font-size: 0.62rem; letter-spacing: 0.08em; }
+      .nav-cta { display: none; }
+      .section-nav { overflow-x: auto; flex-wrap: nowrap; }
+      .sec-btn { flex-shrink: 0; font-size: 0.58rem; padding: 0.9rem 0.8rem; }
+      .skill-grid { grid-template-columns: 1fr; }
+      .lang-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="brand">Bhas Karmarkar</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about" class="on">Work</a></li>
+    <li><a href="/travel">Travelogue</a></li>
+    <li><a href="/research">Research</a></li>
+  </ul>
+  <a href="mailto:bhasnk@vt.edu" class="nav-cta">Get in Touch</a>
+</nav>
+
+<main>
+
+<!-- HERO — rendered by JS from profile.json -->
+<div id="hero-wrap"></div>
+
+<!-- STATS -->
+<div class="stats-outer"><div class="stats wrap" id="stats-wrap"></div></div>
+
+<!-- SECTION NAV -->
+<div class="section-nav-outer">
+  <div class="section-nav">
+    <button class="sec-btn" data-target="experience">Experience</button>
+    <button class="sec-btn" data-target="skills">Skills</button>
+    <button class="sec-btn" data-target="projects">Projects</button>
+    <button class="sec-btn" data-target="publications">Publications</button>
+    <button class="sec-btn" data-target="languages">Languages</button>
+  </div>
+</div>
+
+<div class="section collapsible" id="experience">
+  <div class="section-inner"><div class="section-inner-pad wrap" id="experience-content"></div></div>
+</div>
+<div class="section collapsible" id="skills">
+  <div class="section-inner"><div class="section-inner-pad wrap" id="skills-content"></div></div>
+</div>
+<div class="section collapsible" id="projects">
+  <div class="section-inner"><div class="section-inner-pad wrap" id="projects-content"></div></div>
+</div>
+<div class="section collapsible" id="publications">
+  <div class="section-inner"><div class="section-inner-pad wrap" id="publications-content"></div></div>
+</div>
+<div class="section collapsible" id="languages">
+  <div class="section-inner"><div class="section-inner-pad wrap" id="languages-content"></div></div>
+</div>
+
+</main>
+
+<footer id="site-footer"></footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  fetch("/profile.json")
+    .then(r => r.json())
+    .then(p => {
+      renderHero(p);
+      renderStats(p);
+      renderExperience(p);
+      renderSkills(p);
+      renderProjects(p);
+      renderPublications(p);
+      renderLanguages(p);
+      renderFooter(p);
+      initAccordion();
+    })
+    .catch(() => useFallback());
+
+  function renderHero(p) {
+    document.getElementById("hero-wrap").innerHTML = `
+      <div class="hero wrap">
+        <div class="hero-sidebar">
+          <img src="/images/profile.jpg" alt="${p.name}" class="profile-img" />
+          <div class="edu-blocks">
+          ${p.education.map(e => `
+            <div class="edu-block">
+              <div class="edu-label">${e.degree}</div>
+              <div class="edu-school">${e.school}</div>
+              <div class="edu-sub">${e.detail}</div>
+            </div>`).join("")}
+          </div>
+        </div>
+        <div class="hero-main">
+          <div class="eyebrow"><span class="dot"></span>${p.currently}</div>
+          <h1>${p.name.split(" ")[0]}<br>${p.name.split(" ")[1]}</h1>
+          <div class="role">${p.role}</div>
+          <p class="bio">${p.bio}</p>
+          <div class="contacts">
+            <div class="crow"><span class="clbl">Email</span><a href="mailto:${p.email}">${p.email}</a></div>
+            <div class="crow"><span class="clbl">LinkedIn</span><a href="${p.linkedinUrl}" target="_blank" rel="noopener noreferrer">${p.linkedin}</a></div>
+            <div class="crow"><span class="clbl">Scholar</span><a href="${p.scholarUrl}" target="_blank" rel="noopener noreferrer">${p.scholar}</a></div>
+          </div>
+          <div class="cta">
+            <a href="mailto:${p.email}" class="btn btn-dark">Get in Touch</a>
+            <button class="btn sec-btn" data-target="experience">Experience</button>
+            <button class="btn sec-btn" data-target="publications">Publications</button>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function renderStats(p) {
+    document.getElementById("stats-wrap").innerHTML =
+      p.stats.map(s => `
+        <div class="stat">
+          <span class="snum">${s.value}</span>
+          <div class="sdesc">${s.label}</div>
+        </div>`).join("");
+  }
+
+  function renderExperience(p) {
+    document.getElementById("experience-content").innerHTML = `
+      <div class="lbl">Experience</div>` +
+      p.experience.map(e => `
+        <div class="exp-item">
+          <div>
+            <span class="eperiod">${e.period}</span>
+            <div class="eorg">${e.org}</div>
+            ${e.orgSub ? `<div class="eorgsub">${e.orgSub}</div>` : ""}
+            <div class="eloc">${e.location}</div>
+          </div>
+          <div>
+            <div class="erole">${e.role}</div>
+            ${e.bullets
+              ? `<ul class="ebullets">${e.bullets.map(b => `<li>${b}</li>`).join("")}</ul>`
+              : e.description ? `<p class="bio" style="margin-bottom:0">${e.description}</p>` : ""
+            }
+          </div>
+        </div>`).join("");
+  }
+
+  function renderSkills(p) {
+    document.getElementById("skills-content").innerHTML = `
+      <div class="lbl">Skills</div>
+      <div class="skill-grid">` +
+      p.skills.map(g => `
+        <div>
+          <div class="sglbl">${g.group}</div>
+          <div class="chips">
+            ${g.items.map(i => `<span class="chip">${i}</span>`).join("")}
+          </div>
+        </div>`).join("") +
+      `</div>`;
+  }
+
+  function renderProjects(p) {
+    document.getElementById("projects-content").innerHTML = `
+      <div class="lbl">Projects</div>
+      <div class="proj-grid">` +
+      p.projects.map(pr => `
+        <div class="proj-card">
+          <div class="pname">${pr.name}</div>
+          <div class="ptech">${pr.tech.map(t => `<span class="chip">${t}</span>`).join("")}</div>
+          <p class="pdesc">${pr.description}</p>
+          <div class="pyear">${pr.period}</div>
+        </div>`).join("") +
+      `</div>`;
+  }
+
+  function renderPublications(p) {
+    document.getElementById("publications-content").innerHTML = `
+      <div class="lbl">Publications</div>` +
+      p.publications.map(pub => `
+        <div class="pub-item">
+          <div class="pnum">${pub.number}</div>
+          <div>
+            <div class="ptitle"><a href="${pub.url}" target="_blank" rel="noopener noreferrer">${pub.title}</a></div>
+            <div class="pvenue">${pub.venue}</div>
+          </div>
+        </div>`).join("");
+  }
+
+  function renderLanguages(p) {
+    document.getElementById("languages-content").innerHTML = `
+      <div class="lbl">Languages</div>
+      <div class="lang-row">` +
+      p.languages.map(l => `
+        <div class="lang-item">
+          <div class="lname">${l.name}</div>
+          <div class="llevel">${l.level}</div>
+        </div>`).join("") +
+      `</div>`;
+  }
+
+  function renderFooter(p) {
+    document.getElementById("site-footer").innerHTML = `
+      <span>${p.name} · ${p.role} · Pune, India</span>
+      <span><a href="mailto:${p.email}">${p.email}</a> · <a href="${p.linkedinUrl}" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>`;
+  }
+
+  function useFallback() {
+    const p = {
+      name: "Bhas Karmarkar", role: "Applied robotics and automation systems",
+      currently: "Bajaj Auto Ltd. · Pune, India",
+      bio: "Mechanical engineer specialising in industrial robotics, autonomous mobile systems, and microrobotics research. Currently leading R&D automation at Bajaj Auto — FANUC dual-arm assemblies and 3D-vision-guided precision assembly.",
+      email: "bhasnk@vt.edu",
+      linkedin: "linkedin.com/in/bhaskarmarkar", linkedinUrl: "https://linkedin.com/in/bhaskarmarkar",
+      scholar: "Bhas Karmarkar", scholarUrl: "https://scholar.google.com/citations?user=R7_0lTAAAAAJ&hl=en&oi=ao",
+      stats: [{ value: "~2", label: "Years Experience in Industry" }, { value: "2+", label: "Years Experience in Research" }, { value: "2", label: "Publications" }],
+      education: [
+        { degree: "MS · Mechanical Engineering", school: "Virginia Tech", detail: "Dec 2023 · GPA 3.91" },
+        { degree: "BE · Mechanical Engineering", school: "Savitribai Phule Pune University · Pune", detail: "May 2021 · GPA 9.12" }
+      ],
+      experience: [
+        { period: "Nov 2024 – Present", org: "Bajaj Auto Ltd.", orgSub: "PGTE Programme", location: "Pune, India", role: "Assistant Manager — MAT Robotics", bullets: ["Built Python GUI + C# macro for manufacturing cost estimation — <strong>95% time savings</strong> per operation.", "Designed and deployed a <strong>low-cost part shuttle (&lt;$2,500)</strong> eliminating one operator per shift.", "Leading R&D and DOE on <strong>FANUC dual-arm robotic setup</strong> for brake shoe and timing chain assembly automation.", "Planned and deployed <strong>AMR layout for battery transport</strong>, replacing Battery Operated Pallet Trucks.", "Researching <strong>FANUC 3D-vision-guided assembly</strong> on continuous conveyors at 40 mm/s."] },
+        { period: "Apr 2022 – Oct 2024", org: "MicroN Base Lab · Virginia Tech", orgSub: "Research Assistant", location: "Blacksburg, USA", role: "Research Assistant", bullets: ["Designed mechanical models for <strong>acoustic polymer characterisation</strong> — published at <strong>MARSS 2024, Delft</strong>.", "Improved <strong>microrobot tracking by 10%</strong> via ML hyperparameter optimisation — published in <strong>Advanced Intelligent Systems</strong>.", "Rheological studies on 0.3–0.5% viscoelastic polymers across frequency and temperature ranges for V&V.", "Mentored 6-member senior design team on magneto-acoustic actuation."] },
+        { period: "Jul 2020 – Jun 2021", org: "Mattechs Solutions", orgSub: "", location: "Pune, India", role: "Mechanical Project Intern", bullets: ["Delivered full pilot-scale <strong>disinfection AGV (medical device)</strong> from concept to production.", "Engineered chassis + control system with app integration; redesigned for <strong>15% cost reduction</strong>."] },
+        { period: "Dec 2019 – Jan 2020", org: "Pari Robotics", orgSub: "", location: "Pune, India", role: "Build Engineer Intern", bullets: ["Assembled belt conveyor and gantry; integrated <strong>pneumatic control with PLC</strong> across 3 subsystems.", "Redesigned critical components reducing project timeline by <strong>10 days</strong>."] },
+        { period: "Feb 2019 – Mar 2019", org: "Alfa Enterprises", orgSub: "", location: "Pune, India", role: "Manufacturing Intern", bullets: ["New resin mixture achieving <strong>40% weight reduction</strong> in composite part.", "3-step efficiency plan: <strong>20% less downtime, 30% higher output</strong>."] }
+      ],
+      skills: [
+        { group: "Software", items: ["MATLAB","Python","SolidWorks","AutoCAD","NX","Creo","SolidEdge","Visual Components","Teamcenter","SAP"] },
+        { group: "Hardware & Embedded", items: ["FANUC Robots","AMR / AGV","Arduino","Raspberry Pi","ESP32","MSP432","HM-10","PLC"] },
+        { group: "Engineering", items: ["GD&T","DFMEA","DFA","DOE","3D Printing","Pneumatics","Laser Processes","Machine Tools"] }
+      ],
+      projects: [
+        { name: "Water Strider pH Maintenance Robot", tech: ["SolidWorks","DFRobot Beetle","SMA Actuator","3D Printing"], description: "Scaled water strider leveraging surface tension. Thermal analysis for Shape Memory Alloy actuator; warping assessment of 3D-printed prototypes.", period: "Jan – May 2022" },
+        { name: "Bell Crank Gradient-Based Optimisation", tech: ["Creo","MATLAB","Gradient Optimisation"], description: "20% weight reduction while maintaining 100% safety compliance through gradient-based shape optimisation.", period: "Jan – May 2022" },
+        { name: "Automated Lighting Control + Cloud Logging", tech: ["AWS","Raspberry Pi","Python","Telegram API"], description: "Movement-detection system on AWS Cloud with automated lighting and real-time Telegram notifications.", period: "Aug – Dec 2021" },
+        { name: "Formula Student (FSAE) Race Car", tech: ["SolidWorks","ANSYS","FRP Manufacturing","Arduino"], description: "35-member team · Formula 1-style race car · <strong>National rank 15th</strong>. Led aerodynamics and managed business & sponsorship.", period: "Jul 2018 – Aug 2019" }
+      ],
+      publications: [
+        { number: "01", title: "Motion Enhanced Multi-Level Tracker (MEMTrack): A Deep Learning-Based Approach to Microrobot Tracking in Dense and Low-Contrast Environments", url: "https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/aisy.202300590", venue: "Advanced Intelligent Systems · Feb 2024" },
+        { number: "02", title: "Viscoelastic Characterization of an Agar Tissue Phantom Using Acoustic Microelastography", url: "https://ieeexplore.ieee.org/abstract/document/10612723", venue: "MARSS Conference 2024 · Delft, Netherlands · July 2024" }
+      ],
+      languages: [
+        { name: "English", level: "Fluent" }, { name: "Deutsch", level: "B2 · Professional" },
+        { name: "हिंदी", level: "Native" }, { name: "मराठी", level: "Native" }
+      ]
+    };
+    renderHero(p); renderStats(p); renderExperience(p); renderSkills(p);
+    renderProjects(p); renderPublications(p); renderLanguages(p); renderFooter(p);
+    initAccordion();
+  }
+
+  function initAccordion() {
+    document.querySelectorAll(".sec-btn[data-target]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.target;
+        const section = document.getElementById(id);
+        if (!section) return;
+        const isOpen = section.classList.contains("open");
+        document.querySelectorAll(".section.collapsible").forEach(s => s.classList.remove("open"));
+        document.querySelectorAll(".sec-btn[data-target]").forEach(b => b.classList.remove("active"));
+        if (!isOpen) {
+          section.classList.add("open");
+          document.querySelectorAll(`.sec-btn[data-target="${id}"]`).forEach(b => b.classList.add("active"));
+          const offset = 56 + 44;
+          const top = section.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      });
+    });
+  }
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+---
+import { getCollection, render } from "astro:content";
+import ResearchLayout from "../../layouts/ResearchLayout.astro";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("research");
+  return articles.map(article => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const { title, deck, topics, date, stats } = article.data;
+
+// Compute read time from actual article body
+const rawBody = article.body || "";
+const plainText = rawBody.replace(/<[^>]+>/g, "").replace(/[#*`>\[\]()_]/g, "");
+const wordCount = plainText.trim().split(/\s+/).filter(Boolean).length;
+const readTime = Math.max(1, Math.round(wordCount / 120)) + " Min Read";
+---
+<ResearchLayout title={title} deck={deck} topics={topics} date={date} readTime={readTime} stats={stats || []}>
+  <Content />
+</ResearchLayout>

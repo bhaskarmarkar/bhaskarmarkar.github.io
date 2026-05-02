@@ -1,0 +1,17 @@
+{
+  "articles": [
+    {
+      "id": "mfg-puzzle",
+      "title": "India's Manufacturing Puzzle",
+      "deck": "Is India failing at manufacturing, or are we measuring the wrong thing? A look at the structural shift from a services-first economy to an integrated industrial engine.",
+      "topics": [
+        "economics",
+        "policy"
+      ],
+      "date": "April 2026",
+      "excerpt": "Is India failing at manufacturing, or are we measuring the wrong thing? A look at the structural shift from a services-first economy to an integrated industrial engine.",
+      "file": "/research/mfg-puzzle",
+      "wordCount": 1246
+    }
+  ]
+}

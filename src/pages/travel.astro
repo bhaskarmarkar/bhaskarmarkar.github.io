@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style is:global>
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    :root {
+      --bg:        #faf8f5;
+      --bg2:       #f0ebe3;
+      --ink:       #1a1614;
+      --ink2:      #4a4541;
+      --muted:     #8a8480;
+      --red:       #c44536;
+      --gold:      #c8973a;
+      --line:      #e0d5c7;
+      --map-bg:    #f2ece4;
+      --mono:      'DM Mono', monospace;
+      --serif:     'Cormorant Garamond', serif;
+      --serif-hd:  'Libre Baskerville', serif;
+      --pad:       clamp(1.2rem,5vw,3rem);
+      --max:       1100px;
+      --nav-bg:    rgba(250,248,245,0.92);
+    }
+    body { background:var(--bg); color:var(--ink); font-family:var(--serif); line-height:1.75; -webkit-font-smoothing:antialiased; font-size:18px; }
+    ::selection { background:var(--gold); color:#fff; }
+
+    /* ── NAV ── */
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; height:56px; display:flex; align-items:center; justify-content:space-between; padding:0 var(--pad); backdrop-filter:blur(14px); border-bottom:1px solid var(--line); background:var(--nav-bg); }
+    .brand { font-family:var(--mono); font-size:0.75rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; color:var(--ink); white-space:nowrap; }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; color:var(--muted); transition:color 0.2s; }
+    .nav-links a:hover, .nav-links a.on { color:var(--ink); }
+    .nav-cta { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.45rem 1rem; border: 1px solid var(--ink); color: var(--ink); text-decoration: none; transition: all 0.2s; }
+    .nav-cta:hover { background: var(--ink); color: var(--bg); }
+
+    main { padding-top:56px; }
+    .wrap { max-width:var(--max); margin:0 auto; }
+
+    /* ── HERO ── */
+    .page-hero { min-height:44vh; display:flex; align-items:flex-end; padding:4rem var(--pad) 3.5rem; background:linear-gradient(150deg,#ede4d6 0%,#d8cbb8 100%); border-bottom:3px solid var(--red); position:relative; overflow:hidden; }
+    .page-hero::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c89540' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .hero-inner { position:relative; max-width:var(--max); margin:0 auto; width:100%; }
+    .hero-kicker { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--red); display:flex; align-items:center; gap:0.8rem; margin-bottom:1.2rem; }
+    .hero-kicker::before { content:''; width:32px; height:1px; background:var(--red); }
+    .page-hero h1 { font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(2.4rem,6vw,4.2rem); letter-spacing:-0.01em; line-height:1.1; color:var(--ink); margin-bottom:0.8rem; }
+    .page-hero p { font-family:var(--serif); font-style:italic; font-size:1.1rem; color:var(--ink2); font-weight:300; }
+
+    /* ── MAP ── */
+    .map-section { padding:3rem var(--pad) 0; }
+    .map-container { width:100%; background:var(--map-bg); border:1px solid var(--line); position:relative; overflow:hidden; margin-bottom:2rem; }
+    .tooltip { position:absolute; top:14px; right:14px; background:var(--ink); color:var(--bg); padding:0.3rem 0.7rem; font-family:var(--mono); font-size:0.58rem; text-transform:uppercase; letter-spacing:0.1em; pointer-events:none; }
+
+    /* ── STATS ── */
+    .travel-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:4rem; }
+    .stat-item { background:var(--bg); padding:2rem 1rem; text-align:center; }
+    .stat-val { font-family:var(--serif-hd); font-size:2.4rem; font-weight:700; color:var(--ink); display:block; line-height:1; }
+    .stat-lbl { font-family:var(--mono); font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-top:0.5rem; display:block; }
+
+    /* ── CAROUSEL ── */
+    .carousel-section { border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:3rem 0; margin-bottom:4rem; background:var(--bg2); }
+    .carousel-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.8rem; padding:0 var(--pad); }
+    .carousel-label { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--red); display:flex; align-items:center; gap:0.8rem; }
+    .carousel-label::before { content:''; width:24px; height:1px; background:var(--red); }
+    .carousel-controls { display:flex; gap:0.5rem; }
+    .carousel-btn { width:34px; height:34px; border:1px solid var(--line); background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; color:var(--ink); font-size:0.9rem; }
+    .carousel-btn:hover { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+    .carousel-track-wrap { overflow:hidden; padding:0 var(--pad); cursor:grab; user-select:none; }
+    .carousel-track-wrap:active { cursor:grabbing; }
+    .carousel-track { display:flex; gap:1.2rem; transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); will-change:transform; }
+    .carousel-slide { flex:0 0 auto; width:320px; }
+    .carousel-img-wrap { width:100%; height:220px; overflow:hidden; background:var(--line); }
+    .carousel-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s; }
+    .carousel-slide:hover .carousel-img-wrap img { transform:scale(1.04); }
+    .carousel-caption { padding:0.8rem 0 0; }
+    .carousel-place { font-family:var(--serif-hd); font-size:0.95rem; color:var(--ink); display:block; margin-bottom:0.2rem; }
+    .carousel-loc { font-family:var(--mono); font-size:0.58rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; }
+    .carousel-dots { display:flex; gap:0.4rem; justify-content:center; margin-top:1.8rem; }
+    .carousel-dot { width:5px; height:5px; border-radius:50%; background:var(--line); border:none; padding:0; cursor:pointer; transition:background 0.2s; }
+    .carousel-dot.active { background:var(--red); }
+
+    /* ── TRIPS SECTION ── */
+    .trips-section { padding:0 var(--pad) 5rem; }
+    .section-kicker { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--red); display:flex; align-items:center; gap:0.8rem; margin-bottom:2.5rem; }
+    .section-kicker::before { content:''; width:24px; height:1px; background:var(--red); }
+    .travel-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(460px,100%),1fr)); gap:1px; background:var(--line); border:1px solid var(--line); }
+    .trip-card { background:var(--bg); text-decoration:none; color:inherit; display:flex; flex-direction:column; transition:background 0.2s; }
+    .trip-card:hover { background:var(--bg2); }
+    .card-img { width:100%; height:280px; background-size:cover; background-position:center; }
+    .card-content { padding:2rem; flex:1; display:flex; flex-direction:column; }
+    .card-meta { font-family:var(--mono); font-size:0.58rem; text-transform:uppercase; color:var(--red); letter-spacing:0.14em; margin-bottom:0.7rem; display:block; }
+    .card-title { font-family:var(--serif-hd); font-size:1.4rem; font-weight:700; margin-bottom:0.8rem; line-height:1.25; color:var(--ink); }
+    .card-excerpt { font-size:0.95rem; color:var(--ink2); margin-bottom:1.5rem; font-weight:300; line-height:1.7; flex:1; }
+    .read-more { font-family:var(--mono); font-size:0.6rem; font-weight:500; text-transform:uppercase; color:var(--gold); letter-spacing:0.1em; }
+
+    /* ── FOOTER ── */
+    footer { background:var(--ink); color:var(--bg); padding:2rem var(--pad); text-align:center; font-family:var(--mono); font-size:0.62rem; letter-spacing:0.08em; }
+    footer a { color:var(--gold); text-decoration:none; }
+
+    /* ── MOBILE ── */
+    @media(max-width:768px) {
+      .travel-stats { grid-template-columns:1fr; }
+      .stat-item { border-bottom:1px solid var(--line); }
+      .stat-item:last-child { border-bottom:none; }
+    }
+    @media(max-width:600px) {
+      nav { height:52px; padding:0 1.2rem; }
+      .brand { font-size:0; letter-spacing:0; }
+      .brand::after { content:'BK'; font-size:0.78rem; letter-spacing:0.14em; font-family:var(--mono); }
+      .nav-links { gap:1.4rem; }
+      .nav-links a { font-size:0.62rem; letter-spacing:0.08em; }
+      .nav-cta { display:none; }
+      .page-hero { min-height:36vh; padding:3rem var(--pad) 2.5rem; }
+      .carousel-slide { width:260px; }
+      .map-section { padding:2rem var(--pad) 0; }
+    }
+
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="brand">Bhas Karmarkar</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">Work</a></li>
+    <li><a href="/travel" class="on">Travelogue</a></li>
+    <li><a href="/research">Research</a></li>
+  </ul>
+  <a href="mailto:bhasnk@vt.edu" class="nav-cta">Get in Touch</a>
+</nav>
+
+<main>
+
+  <div class="page-hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Field Dispatches</div>
+      <h1>Travelogues</h1>
+      <p>Places seen through an engineer's eye — infrastructure, culture, and the spaces in between.</p>
+    </div>
+  </div>
+
+  <div class="map-section wrap">
+    <div class="map-container" style="height:480px;">
+      <canvas id="world-map-canvas" style="width:100%;height:100%;display:block;"></canvas>
+      <div id="city-tooltip" class="tooltip">Hover a city</div>
+    </div>
+    <div class="travel-stats">
+      <div class="stat-item"><span class="stat-val" id="stat-countries">—</span><span class="stat-lbl">Countries</span></div>
+      <div class="stat-item"><span class="stat-val" id="stat-cities">—</span><span class="stat-lbl">Cities</span></div>
+      <div class="stat-item"><span class="stat-val" id="stat-km">—</span><span class="stat-lbl">Kilometers</span></div>
+    </div>
+  </div>
+
+  <div class="carousel-section" id="carousel-section" style="display:none;">
+    <div class="carousel-header">
+      <span class="carousel-label">Highlights</span>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="carousel-prev">&#8592;</button>
+        <button class="carousel-btn" id="carousel-next">&#8594;</button>
+      </div>
+    </div>
+    <div class="carousel-track-wrap" id="carousel-wrap">
+      <div class="carousel-track" id="carousel-track"></div>
+    </div>
+    <div class="carousel-dots" id="carousel-dots"></div>
+  </div>
+
+  <div class="trips-section wrap">
+    <div class="section-kicker">Itineraries</div>
+    <div class="travel-grid" id="trip-grid"></div>
+  </div>
+
+</main>
+
+<footer>
+  Bhas Karmarkar · 2026 · Field Dispatches ·
+  <a href="/">Home</a> · <a href="/about">Work</a> · <a href="/research">Research</a>
+</footer>
+
+<script>
+let travelData = null;
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  fetch('travel-data.json')
+    .then(r => r.json())
+    .then(data => { travelData = data; renderTripCards(); renderMap(); updateStats(); renderCarousel(); })
+    .catch(err => console.error('Could not load travel-data.json:', err));
+
+  function renderTripCards() {
+    const grid = document.getElementById('trip-grid');
+    grid.innerHTML = '';
+    travelData.trips.forEach(trip => {
+      const card = document.createElement('a');
+      card.href = trip.file;
+      card.className = 'trip-card';
+      card.innerHTML = `
+        <div class="card-img" style="background:linear-gradient(rgba(0,0,0,0.08),rgba(0,0,0,0.35)),url('${trip.image}') center/cover;background-color:${trip.imageFallback};"></div>
+        <div class="card-content">
+          <span class="card-meta">${trip.volume} · ${trip.days} Days</span>
+          <h2 class="card-title">${trip.title}</h2>
+          <p class="card-excerpt">${trip.excerpt}</p>
+          <span class="read-more">View Itinerary →</span>
+        </div>`;
+      grid.appendChild(card);
+    });
+  }
+
+  function loadScript(src, cb) {
+    const s = document.createElement('script');
+    s.src = src; s.onload = cb;
+    document.head.appendChild(s);
+  }
+
+  function renderMap() {
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js', () => {
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js', () => {
+        drawMap();
+      });
+    });
+  }
+
+  function drawMap() {
+    const canvas = document.getElementById('world-map-canvas');
+    const tooltip = document.getElementById('city-tooltip');
+    const allCities = [...travelData.trips.flatMap(t=>t.cities), ...(travelData.visited||[])];
+    const W = canvas.offsetWidth, H = canvas.offsetHeight;
+    canvas.width = W * devicePixelRatio; canvas.height = H * devicePixelRatio;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+    const proj = d3.geoNaturalEarth1().scale(W/6.2).translate([W/2, H/2]);
+    const path = d3.geoPath(proj, ctx);
+    fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+      .then(r => r.json())
+      .then(world => {
+        ctx.fillStyle = '#f2ece4'; ctx.fillRect(0,0,W,H);
+        ctx.beginPath(); path(topojson.feature(world, world.objects.land));
+        ctx.fillStyle = '#ddd0bc'; ctx.fill();
+        ctx.beginPath(); path(topojson.mesh(world, world.objects.countries, (a,b) => a!==b));
+        ctx.strokeStyle = '#f2ece4'; ctx.lineWidth = 0.5; ctx.stroke();
+        allCities.forEach(city => {
+          const [cx,cy] = proj([city.lon, city.lat]);
+          city._cx = cx; city._cy = cy;
+          ctx.beginPath(); ctx.arc(cx, cy, 5, 0, Math.PI*2);
+          ctx.fillStyle = '#1e1a16'; ctx.fill();
+        });
+        canvas.style.pointerEvents = 'auto';
+        canvas.addEventListener('mousemove', e => {
+          const r = canvas.getBoundingClientRect();
+          const mx = e.clientX - r.left, my = e.clientY - r.top;
+          let hit = null;
+          allCities.forEach(c => { const dx=mx-c._cx, dy=my-c._cy; if(Math.sqrt(dx*dx+dy*dy)<14) hit=c; });
+          tooltip.textContent = hit ? hit.name : 'Hover a city';
+          tooltip.style.opacity = hit ? '1' : '0.6';
+          canvas.style.cursor = hit ? 'pointer' : 'default';
+        });
+      })
+      .catch(() => { ctx.fillStyle='#ddd0bc'; ctx.fillRect(20,20,W-40,H-40); });
+  }
+
+  function updateStats() {
+    const all = [...travelData.trips.flatMap(t=>t.cities), ...(travelData.visited||[])];
+    const countries = new Set(all.map(c=>c.name.includes(', ')?c.name.split(', ')[1]:c.name));
+    document.getElementById('stat-countries').textContent = String(countries.size).padStart(2,'0');
+    document.getElementById('stat-cities').textContent = all.length + '+';
+    document.getElementById('stat-km').textContent = travelData.trips.reduce((s,t)=>s+t.days*350,0).toLocaleString();
+  }
+
+  function renderCarousel() {
+    const photos = travelData.photos||[];
+    if (!photos.length) return;
+    document.getElementById('carousel-section').style.display='block';
+    const track=document.getElementById('carousel-track'), dotsEl=document.getElementById('carousel-dots');
+    photos.forEach((p,i)=>{
+      const slide=document.createElement('div'); slide.className='carousel-slide';
+      slide.innerHTML=`<div class="carousel-img-wrap"><img src="${p.src}" alt="${p.caption}" loading="lazy"></div><div class="carousel-caption"><span class="carousel-place">${p.caption}</span><span class="carousel-loc">${p.location}</span></div>`;
+      track.appendChild(slide);
+      const dot=document.createElement('button'); dot.className='carousel-dot'+(i===0?' active':'');
+      dot.addEventListener('click',()=>goTo(i)); dotsEl.appendChild(dot);
+    });
+    const sw=()=>{ const s=track.querySelector('.carousel-slide'); return s?s.offsetWidth+19:339; };
+    let cur=0;
+    function goTo(idx){ cur=Math.max(0,Math.min(idx,photos.length-1)); track.style.transform=`translateX(-${cur*sw()}px)`; document.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===cur)); }
+    document.getElementById('carousel-prev').addEventListener('click',()=>goTo(cur-1));
+    document.getElementById('carousel-next').addEventListener('click',()=>goTo(cur+1));
+    const wrap=document.getElementById('carousel-wrap');
+    let sx=0,drag=false,dd=0;
+    wrap.addEventListener('mousedown',e=>{drag=true;sx=e.clientX;});
+    wrap.addEventListener('mousemove',e=>{if(drag)dd=e.clientX-sx;});
+    wrap.addEventListener('mouseup',()=>{if(drag){if(dd<-50)goTo(cur+1);else if(dd>50)goTo(cur-1);drag=false;dd=0;}});
+    wrap.addEventListener('mouseleave',()=>{drag=false;dd=0;});
+    wrap.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
+    wrap.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-sx;if(d<-50)goTo(cur+1);else if(d>50)goTo(cur-1);});
+    document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')goTo(cur-1);if(e.key==='ArrowRight')goTo(cur+1);});
+  }
+
+  window.addEventListener('resize', () => { if(travelData) drawMap(); });
+}); // DOMContentLoaded
+</script>
+</body>
+</html>

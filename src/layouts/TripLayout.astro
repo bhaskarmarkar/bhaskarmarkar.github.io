@@ -1,0 +1,353 @@
+---
+export interface Props {
+  title: string;
+  subtitle: string;
+  volume: string;
+  days: number;
+  route: string;
+}
+const { title, subtitle, volume, days, route } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} — Bhas Karmarkar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style is:global>
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:        #faf8f5;
+      --bg2:       #f0ebe3;
+      --ink:       #1a1614;
+      --ink2:      #4a4541;
+      --muted:     #8a8480;
+      --red:       #c44536;
+      --gold:      #c8973a;
+      --line:      #e0d5c7;
+      --mono:      'DM Mono', monospace;
+      --serif:     'Cormorant Garamond', serif;
+      --serif-hd:  'Libre Baskerville', serif;
+      --pad:       clamp(1.2rem, 5vw, 2rem);
+      --max:       780px;
+    }
+
+    body {
+      font-family: var(--serif);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.85;
+      font-size: clamp(17px, 2.2vw, 20px);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--gold); color: #fff; }
+
+    /* ── NAV (Matching mfg-puzzle & blog) ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 56px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--pad);
+      background: rgba(250, 248, 245, 0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      text-decoration: none; color: var(--ink); white-space: nowrap;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; text-decoration: none; color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.on { color: var(--ink); }
+    .nav-cta {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.45rem 1rem;
+      border: 1px solid var(--ink); color: var(--ink);
+      text-decoration: none; transition: all 0.2s;
+    }
+    .nav-cta:hover { background: var(--ink); color: var(--bg); }
+
+    /* ── HERO ── */
+    .hero {
+      margin-top: 56px;
+      min-height: 72vh;
+      display: flex; align-items: flex-end;
+      background: linear-gradient(160deg, #f5f0e8 0%, #e4d8c8 100%);
+      border-bottom: 3px solid var(--red);
+      position: relative; overflow: hidden;
+      padding: 5rem var(--pad) 4rem;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(200,151,58,0.04) 80px, rgba(200,151,58,0.04) 81px),
+        repeating-linear-gradient(0deg,  transparent, transparent 80px, rgba(200,151,58,0.04) 80px, rgba(200,151,58,0.04) 81px);
+    }
+    .hero-inner {
+      position: relative;
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-kicker {
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red);
+      display: flex; align-items: center; gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-kicker::before {
+      content: ''; width: 40px; height: 1px; background: var(--red);
+    }
+    .hero h1 {
+      font-family: var(--serif-hd);
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+    .hero-sub {
+      font-family: var(--serif);
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-style: italic;
+      color: var(--ink2);
+      font-weight: 300;
+      max-width: 560px;
+    }
+    .hero-meta {
+      margin-top: 2.5rem;
+      display: flex; align-items: center; gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .hero-meta span {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .hero-meta .sep { color: var(--line); }
+
+    /* ── ARTICLE BODY ── */
+    .article {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 5rem var(--pad) 6rem;
+    }
+
+    /* ── DAY SECTION ── */
+    .day-section { margin-bottom: 5rem; }
+
+    .day-label {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red);
+      display: flex; align-items: center; gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .day-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--line); max-width: 60px;
+    }
+
+    .day-section h3 {
+      font-family: var(--serif-hd);
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.8rem;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    .day-section h4 {
+      font-family: var(--serif-hd);
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink2);
+      margin: 2.5rem 0 1rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--gold);
+    }
+
+    .day-section p {
+      margin-bottom: 1.4rem;
+      color: var(--ink2);
+      hyphens: auto;
+    }
+
+    /* Drop cap on first paragraph of each day */
+    .day-section > p:first-of-type::first-letter,
+    .drop-cap::first-letter {
+      font-size: 4.2em;
+      line-height: 0.82;
+      float: left;
+      margin: 0.06em 0.14em 0 0;
+      font-weight: 700;
+      color: var(--gold);
+      font-family: var(--serif-hd);
+    }
+
+    /* ── PHOTO GRIDS ── */
+    .photo-grid, .photos-2, .photos-3 {
+      display: grid;
+      gap: 0.7rem;
+      margin: 2.5rem 0;
+    }
+    .photo-grid.cols-2, .photos-2 { grid-template-columns: 1fr 1fr; }
+    .photo-grid.cols-3, .photos-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+    .photo-grid.cols-2 img:last-child:nth-child(odd),
+    .photos-2 img:last-child:nth-child(odd) { grid-column: span 2; }
+    .photo-grid.cols-3 img:last-child:nth-child(3n+1),
+    .photos-3 img:last-child:nth-child(3n+1) { grid-column: span 3; }
+    .photo-grid.cols-3 img:last-child:nth-child(3n+2),
+    .photos-3 img:last-child:nth-child(3n+2) { grid-column: span 3; }
+
+    .photo-grid img, .photos-2 img, .photos-3 img {
+      width: 100%; height: auto; display: block;
+      border: 1px solid var(--line);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 80px; height: 1px;
+      background: var(--gold);
+      margin: 4rem auto;
+      position: relative;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      position: absolute;
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      top: -2px;
+    }
+    .divider::before { left: -12px; }
+    .divider::after  { right: -12px; }
+
+    /* ── PULLQUOTE ── */
+    .pullquote {
+      border-left: 2px solid var(--red);
+      margin: 3rem 0;
+      padding: 0.5rem 0 0.5rem 1.8rem;
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 2.8vw, 1.45rem);
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    /* ── CLOSING SECTION ── */
+    .closing {
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 3rem var(--pad);
+      margin: 0 calc(-1 * var(--pad));
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: var(--bg);
+      text-align: center;
+      padding: 2rem var(--pad);
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── BACK BUTTON ── */
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+      text-decoration: none; margin: 72px 0 0 var(--pad);
+      transition: color 0.2s;
+    }
+    .back-btn:hover { color: var(--ink); }
+
+    /* ── MOBILE ── */
+    @media(max-width: 680px) {
+      .hero { min-height: 60vh; padding: 4rem var(--pad) 3rem; }
+      .article { padding: 3rem var(--pad) 4rem; }
+      .photo-grid.cols-3, .photos-3 { grid-template-columns: 1fr 1fr; }
+      .photo-grid.cols-3 img:last-child:nth-child(odd),
+      .photos-3 img:last-child:nth-child(odd) { grid-column: span 2; }
+      p { hyphens: none; }
+    }
+    
+    /* Responsive Nav to match mfg-puzzle */
+    @media(max-width: 600px) {
+      nav { height: 52px; padding: 0 1.2rem; }
+      .brand { font-size: 0; letter-spacing: 0; }
+      .brand::after { content: 'BK'; font-size: 0.78rem; letter-spacing: 0.14em; font-family: var(--mono); color: var(--ink); }
+      .nav-links { gap: 1.4rem; }
+      .nav-links a { font-size: 0.62rem; letter-spacing: 0.08em; }
+    }
+
+    @media(max-width: 420px) {
+      .photo-grid.cols-2,
+      .photo-grid.cols-3 { grid-template-columns: 1fr; }
+      .photo-grid img,
+      .photo-grid.cols-2 img:last-child:nth-child(odd),
+      .photo-grid.cols-3 img:last-child:nth-child(3n+1),
+      .photo-grid.cols-3 img:last-child:nth-child(3n+2) { grid-column: span 1; }
+    }
+  
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="brand">Bhas Karmarkar</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">Work</a></li>
+    <li><a href="/travel" class="on">Travelogue</a></li>
+    <li><a href="/research">Research</a></li>
+  </ul>
+  <a href="mailto:bhasnk@vt.edu" class="nav-cta">Get in Touch</a>
+</nav>
+
+<a href="/travel" class="back-btn">← All Trips</a>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Travelogue · {volume} · {days} Days</div>
+    <h1>{title}</h1>
+    <p class="hero-sub">{subtitle}</p>
+    <div class="hero-meta">
+      <span>Bhas Karmarkar</span>
+      <span style="color:#e0d5c7">·</span>
+      <span>{route}</span>
+    </div>
+  </div>
+</div>
+
+<div class="article">
+  <slot />
+</div>
+
+<footer>
+  <a href="/travel">← Back to Travelogue</a>
+  &nbsp;·&nbsp;
+  Bhas Karmarkar · 2026
+</footer>
+
+</body>
+</html>

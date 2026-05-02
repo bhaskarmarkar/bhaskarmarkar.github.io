@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bhas Karmarkar</title>
+  <meta name="description" content="Bhas Karmarkar — Robotics Engineer, Traveller and geopolitics enthusiast." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:       #faf8f5;
+      --bg2:      #f0ebe3;
+      --ink:      #1a1614;
+      --ink2:     #4a4541;
+      --muted:    #8a8480;
+      --red:      #c44536;
+      --gold:     #c8973a;
+      --line:     #e0d5c7;
+      --mono:     'DM Mono', monospace;
+      --serif:    'Cormorant Garamond', serif;
+      --serif-hd: 'Libre Baskerville', serif;
+      --pad:      clamp(1.2rem, 5vw, 3rem);
+      --max:      1100px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      font-size: 18px;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--gold); color: #fff; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 56px; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 var(--pad);
+      background: rgba(250,248,245,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-bottom-color: var(--line); }
+    .brand {
+      font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      text-decoration: none; color: var(--ink);
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em;
+      text-transform: uppercase; text-decoration: none;
+      color: var(--muted); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.on { color: var(--ink); }
+    .nav-cta {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.45rem 1rem;
+      border: 1px solid var(--ink); color: var(--ink);
+      text-decoration: none; transition: all 0.2s;
+    }
+    .nav-cta:hover { background: var(--ink); color: var(--bg); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      padding-top: 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 4rem;
+      align-items: center;
+      padding: 5rem var(--pad) 4rem;
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-text { display: flex; flex-direction: column; }
+
+    .hero-photo-col {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      animation: fadeUp 0.8s ease 0.35s both;
+    }
+    .hero-photo {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      border: 1px solid var(--line);
+      filter: grayscale(8%);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red);
+      display: flex; align-items: center; gap: 0.8rem;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.7s ease 0.1s both;
+    }
+    .status-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #22c55e; box-shadow: 0 0 8px #22c55e;
+      animation: pulse 2.4s ease-in-out infinite; flex-shrink: 0;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(0.8)} }
+
+    .hero-name {
+      font-family: var(--serif-hd);
+      font-size: clamp(3.4rem, 8vw, 7.2rem);
+      font-weight: 700; line-height: 1.0;
+      letter-spacing: -0.03em; color: var(--ink);
+      margin-bottom: 1.6rem;
+      animation: fadeUp 0.8s ease 0.25s both;
+    }
+    .hero-name em {
+      font-style: italic; font-weight: 400;
+      font-family: var(--serif); color: var(--red);
+    }
+
+    .hero-desc {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+      color: var(--ink2); font-weight: 300;
+      max-width: 480px; line-height: 1.75;
+      margin-bottom: 2.8rem;
+      animation: fadeUp 0.7s ease 0.4s both;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.6s ease 0.55s both;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--mono); font-size: 0.64rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.75rem 1.6rem; text-decoration: none;
+      border: 1px solid var(--line);
+      transition: all 0.22s; color: var(--ink);
+      background: transparent; cursor: pointer;
+    }
+    .btn:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .btn-primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .btn-primary:hover { background: var(--red); border-color: var(--red); }
+
+    /* ── PHOTO STRIP ── */
+    .photo-strip {
+      width: 100%; overflow: hidden;
+      border-top: 1px solid var(--line);
+      animation: fadeUp 0.8s ease 0.7s both;
+    }
+    .strip-track {
+      display: flex; gap: 0;
+      width: max-content;
+      animation: strip-scroll 110s linear infinite;
+    }
+    .strip-track:hover { animation-play-state: paused; }
+    @keyframes strip-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .strip-img {
+      width: clamp(160px, 20vw, 260px);
+      height: clamp(130px, 16vw, 190px);
+      object-fit: cover; display: block;
+      filter: grayscale(20%) brightness(0.96);
+      transition: filter 0.3s;
+      flex-shrink: 0;
+    }
+    .strip-img:hover { filter: grayscale(0%) brightness(1.04); }
+
+    /* ── GATEWAY CARDS ── */
+    .gateway {
+      padding: 5rem var(--pad);
+      max-width: var(--max); margin: 0 auto;
+    }
+    .gateway-label {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 2.5rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .gateway-label::after { content: ''; flex: 1; height: 1px; background: var(--line); max-width: 60px; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .card {
+      background: var(--bg);
+      padding: 2.8rem 2rem;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+      gap: 1.2rem;
+      transition: background 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: var(--red);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .card:hover { background: var(--bg2); }
+    .card:hover::after { transform: scaleX(1); }
+
+    .card-num {
+      font-family: var(--mono); font-size: 0.58rem;
+      letter-spacing: 0.2em; color: var(--muted);
+      text-transform: uppercase;
+    }
+    .card-title {
+      font-family: var(--serif-hd);
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--ink); line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    .card-title em {
+      font-style: italic; font-weight: 400;
+      font-family: var(--serif);
+    }
+    .card-desc {
+      font-family: var(--serif); font-style: italic;
+      font-size: 0.95rem; color: var(--ink2);
+      line-height: 1.7; font-weight: 300; flex: 1;
+    }
+    .card-arrow {
+      font-family: var(--mono); font-size: 0.62rem;
+      color: var(--gold); letter-spacing: 0.1em;
+      margin-top: auto; display: flex; align-items: center; gap: 0.4rem;
+      transition: gap 0.2s;
+    }
+    .card:hover .card-arrow { gap: 0.8rem; }
+
+    /* ── BRIEF BIO ── */
+    .brief {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--bg2);
+    }
+    .brief-inner {
+      max-width: var(--max); margin: 0 auto;
+      padding: 4rem var(--pad);
+    }
+
+    .brief-kicker {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red);
+      margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .brief-kicker::before { content: ''; width: 24px; height: 1px; background: var(--red); }
+    .brief-heading {
+      font-family: var(--serif-hd);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700; line-height: 1.15;
+      letter-spacing: -0.02em; color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+    .brief-heading em { font-style: italic; font-weight: 400; font-family: var(--serif); }
+    .brief-body {
+      font-size: 1rem; color: var(--ink2); line-height: 1.85;
+      font-weight: 400; font-style: normal; margin-bottom: 2rem; max-width: 640px;
+    }
+    .brief-stats {
+      display: flex; gap: 2.5rem; flex-wrap: wrap;
+      padding-top: 1.5rem; border-top: 1px solid var(--line);
+    }
+    .bstat-val {
+      font-family: var(--serif-hd);
+      font-size: 1.8rem; font-weight: 700;
+      color: var(--ink); display: block; line-height: 1;
+    }
+    .bstat-lbl {
+      font-family: var(--mono); font-size: 0.58rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); margin-top: 0.35rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink); color: var(--bg);
+      padding: 2rem var(--pad);
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 0.5rem;
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { color: var(--bg); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media(max-width: 860px) {
+      .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-photo-col { justify-content: flex-start; }
+      .hero-photo { max-width: 180px; aspect-ratio: 1; border-radius: 50%; }
+      .cards { grid-template-columns: 1fr; }
+      .brief-inner { padding: 2.5rem var(--pad); }
+    }
+    @media(max-width: 600px) {
+      nav { height: 52px; padding: 0 1.2rem; }
+      .brand { font-size: 0; letter-spacing: 0; }
+      .brand::after { content: 'BK'; font-size: 0.78rem; letter-spacing: 0.14em; font-family: var(--mono); color: var(--ink); }
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: 0.6rem; }
+      .nav-cta { display: none; }
+      .hero-content { padding: 2.5rem var(--pad) 2rem; }
+      .hero-name { font-size: clamp(2.6rem, 10vw, 4rem); }
+      .gateway { padding: 3rem var(--pad); }
+      .card { padding: 2rem 1.4rem; }
+      .card-title { font-size: 1.3rem; }
+      .brief-stats { gap: 1.5rem; }
+      .strip-img { width: clamp(130px, 40vw, 200px); height: 130px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="/" class="brand">Bhas Karmarkar</a>
+  <ul class="nav-links">
+    <li><a href="/" class="on">Home</a></li>
+    <li><a href="/about">Work</a></li>
+    <li><a href="/travel">Travelogue</a></li>
+    <li><a href="/research">Research</a></li>
+  </ul>
+  <a href="/about" class="nav-cta">View Work</a>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-eyebrow" id="eyebrow">
+        </div>
+        <h1 class="hero-name" id="hero-name">
+          Bhas<br><em>Karmarkar</em>
+        </h1>
+        <p class="hero-desc" id="hero-desc">
+         building machines and systems that make human life easier and more efficient and writing that explores the world between them.
+        </p>
+        <div class="hero-actions" id="hero-actions">
+          <a href="/about" class="btn btn-primary">View Work</a>
+          <a href="mailto:bhasnk@vt.edu" class="btn">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-photo-col" id="hero-photo">
+        <img src="/images/profile.jpg" alt="Bhas Karmarkar" class="hero-photo" />
+      </div>
+    </div>
+    <div class="photo-strip">
+      <div class="strip-track">
+        <img src="/images/Osaka-castle.jpg" alt="Osaka Castle" class="strip-img" />
+        <img src="/images/blacksburg.jpg" alt="Double rainbow over an apartment complex" class="strip-img" />
+        <img src="/images/DC-pier.jpg" alt="Boats docked at a marina during sunset" class="strip-img" />
+        <img src="/images/Deer-at-nara.jpg" alt="Sika deer resting by tree roots" class="strip-img" />
+        <img src="/images/fushimi-inari.jpg" alt="Vermilion torii gates at Fushimi Inari Shrine" class="strip-img" />
+        <img src="/images/golden-gate.jpg" alt="Golden Gate Bridge covered in fog" class="strip-img" />
+        <img src="/images/Hakone.jpg" alt="Scenic lake surrounded by autumn foliage" class="strip-img" />
+        <img src="/images/hamburg.jpg" alt="Hamburg City Hall" class="strip-img" />
+        <img src="/images/jd-distillery.jpg" alt="Jack Daniel's Distillery tasting flight" class="strip-img" />
+        <img src="/images/lincoln-memorial.jpg" alt="Statue of Abraham Lincoln at the Lincoln Memorial" class="strip-img" />
+        <img src="/images/manhattan.jpg" alt="Aerial view of the New York City skyline" class="strip-img" />
+        <img src="/images/mosque.jpg" alt="Sheikh Zayed Grand Mosque" class="strip-img" />
+        <img src="/images/niagara.jpg" alt="Niagara Falls illuminated in blue at night" class="strip-img" />
+        <img src="/images/seagulls-northsee.jpg" alt="Tern flying over a coastal body of water" class="strip-img" />
+        <img src="/images/SOL.jpg" alt="Statue of Liberty and the Lower Manhattan skyline" class="strip-img" />
+        <img src="/images/stanford.jpg" alt="Main Quad at Stanford University" class="strip-img" />
+        <img src="/images/VT-football.jpg" alt="Night game at Lane Stadium, Virginia Tech" class="strip-img" />
+        <img src="/images/wall-street.jpg" alt="Intersection at South William Street during dusk" class="strip-img" />
+        <!-- duplicate set for seamless loop -->
+        <img src="/images/Osaka-castle.jpg" alt="Osaka Castle" class="strip-img" />
+        <img src="/images/blacksburg.jpg" alt="Double rainbow over an apartment complex" class="strip-img" />
+        <img src="/images/DC-pier.jpg" alt="Boats docked at a marina during sunset" class="strip-img" />
+        <img src="/images/Deer-at-nara.jpg" alt="Sika deer resting by tree roots" class="strip-img" />
+        <img src="/images/fushimi-inari.jpg" alt="Vermilion torii gates at Fushimi Inari Shrine" class="strip-img" />
+        <img src="/images/golden-gate.jpg" alt="Golden Gate Bridge covered in fog" class="strip-img" />
+        <img src="/images/Hakone.jpg" alt="Scenic lake surrounded by autumn foliage" class="strip-img" />
+        <img src="/images/hamburg.jpg" alt="Hamburg City Hall" class="strip-img" />
+        <img src="/images/jd-distillery.jpg" alt="Jack Daniel's Distillery tasting flight" class="strip-img" />
+        <img src="/images/lincoln-memorial.jpg" alt="Statue of Abraham Lincoln at the Lincoln Memorial" class="strip-img" />
+        <img src="/images/manhattan.jpg" alt="Aerial view of the New York City skyline" class="strip-img" />
+        <img src="/images/mosque.jpg" alt="Sheikh Zayed Grand Mosque" class="strip-img" />
+        <img src="/images/niagara.jpg" alt="Niagara Falls illuminated in blue at night" class="strip-img" />
+        <img src="/images/seagulls-northsee.jpg" alt="Tern flying over a coastal body of water" class="strip-img" />
+        <img src="/images/SOL.jpg" alt="Statue of Liberty and the Lower Manhattan skyline" class="strip-img" />
+        <img src="/images/stanford.jpg" alt="Main Quad at Stanford University" class="strip-img" />
+        <img src="/images/VT-football.jpg" alt="Night game at Lane Stadium, Virginia Tech" class="strip-img" />
+        <img src="/images/wall-street.jpg" alt="Intersection at South William Street during dusk" class="strip-img" />
+      </div>
+    </div>
+  </section>
+
+  <!-- GATEWAY CARDS -->
+  <section class="gateway">
+    <div class="gateway-label reveal">Explore</div>
+    <div class="cards reveal">
+      <a href="/about" class="card">
+        <div class="card-num">01</div>
+        <div class="card-title">Work</div>
+        <p class="card-desc">Experience, skills, projects and publications — a full picture of my work in robotics and automation.</p>
+        <span class="card-arrow">View Work →</span>
+      </a>
+      <a href="/travel" class="card">
+        <div class="card-num">02</div>
+        <div class="card-title">Travelogue</div>
+        <p class="card-desc">Field dispatches from Japan, Germany, USA and beyond — places seen through an engineer's eye.</p>
+        <span class="card-arrow">Read Dispatches →</span>
+      </a>
+      <a href="/research" class="card">
+        <div class="card-num">03</div>
+        <div class="card-title">Research</div>
+        <p class="card-desc">Essays on economics, policy, and technology — things I find interesting to explore.</p>
+        <span class="card-arrow">Read Essays →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- BRIEF BIO -->
+  <section class="brief">
+    <div class="brief-inner">
+      <div class="reveal" style="transition-delay: 0.15s;">
+        <div class="brief-kicker">About</div>
+        <h2 class="brief-heading">
+          <br>Bringing Intelligence into the Physical World</br>
+        </h2>
+        <p class="brief-body">
+          I am a mechanical engineer and R&D professional building advanced automation solutions that make everyday life more accessible.
+        </p>
+        <div class="brief-stats">
+          <div class="bstat">
+            <span class="bstat-val">~2</span>
+            <div class="bstat-lbl">Years Industry</div>
+          </div>
+          <div class="bstat">
+            <span class="bstat-val">2+</span>
+            <div class="bstat-lbl">Years Research</div>
+          </div>
+          <div class="bstat">
+            <span class="bstat-val">2</span>
+            <div class="bstat-lbl">Publications</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+<footer>
+  <span>Bhas Karmarkar · Robotics Engineer · Pune, India</span>
+  <span>
+    <a href="mailto:bhasnk@vt.edu">bhasnk@vt.edu</a> ·
+    <a href="https://linkedin.com/in/bhaskarmarkar" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
+    <a href="https://scholar.google.com/citations?user=R7_0lTAAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a>
+  </span>
+</footer>
+
+<script>
+  // Nav scroll shadow
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+
+</script>
+
+</body>
+</html>

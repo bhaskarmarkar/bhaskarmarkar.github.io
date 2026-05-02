@@ -188,7 +188,7 @@ let travelData = null;
 
 document.addEventListener("DOMContentLoaded", function() {
 
-  fetch('travel-data.json')
+  fetch('/travel-data.json')
     .then(r => r.json())
     .then(data => { travelData = data; renderTripCards(); renderMap(); updateStats(); renderCarousel(); })
     .catch(err => console.error('Could not load travel-data.json:', err));

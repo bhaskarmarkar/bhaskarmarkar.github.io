@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function() {
   let blogData = null;
   let activeFilter = null;
 
-  fetch('blog-data.json')
+  fetch('/blog-data.json')
     .then(r => r.json())
     .then(data => {
       // Compute readTime from actual wordCount stored in blog-data.json

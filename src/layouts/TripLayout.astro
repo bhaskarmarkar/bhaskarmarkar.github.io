@@ -293,6 +293,7 @@ const { title, subtitle, volume, days, route } = Astro.props;
     
     /* Responsive Nav to match mfg-puzzle */
     @media(max-width: 600px) {
+      .nav-cta { display: none; }
       nav { height: 52px; padding: 0 1.2rem; }
       .brand { font-size: 0; letter-spacing: 0; }
       .brand::after { content: 'BK'; font-size: 0.78rem; letter-spacing: 0.14em; font-family: var(--mono); color: var(--ink); }
